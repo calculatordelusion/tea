@@ -15,14 +15,28 @@ This project is ready for deployment on Vercel with the following configuration:
 3. Import from GitHub: `https://github.com/calculatordelusion/tea`
 4. Select the repository and click "Import"
 
-### Step 2: Configure Environment Variables
+### Step 2: Configure Environment Variables (CRITICAL STEP)
+⚠️ **This step is required - the deployment will fail without these variables!**
+
 In the Vercel project settings, add these environment variables:
 
-**Required Environment Variables:**
-```
-VITE_DEEPSEEK_V3_API_KEY=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
-VITE_DEEPSEEK_R1_API_KEY=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
-```
+1. Go to your project in Vercel dashboard
+2. Click **Settings** tab
+3. Click **Environment Variables** in the left sidebar
+4. Click **Add New** for each variable:
+
+**Variable 1:**
+- Name: `VITE_DEEPSEEK_V3_API_KEY`
+- Value: `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`
+- Environment: ✅ Production ✅ Preview ✅ Development
+
+**Variable 2:**
+- Name: `VITE_DEEPSEEK_R1_API_KEY`
+- Value: `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`
+- Environment: ✅ Production ✅ Preview ✅ Development
+
+5. Click **Save** after each variable
+6. **Important**: Redeploy your project after adding variables!
 
 ### Step 3: Deploy Settings
 Vercel will automatically detect this as a Vite project. The `vercel.json` configuration includes:
