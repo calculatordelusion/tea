@@ -1,0 +1,330 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #root {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* DeepSeek specific styles optimized for embedding */
+.deepseek-chat-wrapper {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.deepseek-chat-bg {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e1e5e9;
+  width: 100%;
+  margin: 0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.deepseek-chat-bg:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.deepseek-message-user {
+  background: #007fff;
+  border-radius: 18px 18px 6px 18px;
+  box-shadow: 0 2px 8px rgba(0, 127, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1);
+  animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: right center;
+}
+
+.deepseek-message-assistant {
+  background: #f8f9fa;
+  color: #1f2937;
+  border-radius: 18px 18px 18px 6px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+}
+
+.deepseek-input {
+  border: 1px solid #d1d5db;
+  border-radius: 24px;
+  background: #ffffff;
+  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.deepseek-input:focus {
+  border-color: #007fff;
+  box-shadow: 0 0 0 3px rgba(0, 127, 255, 0.1), 0 2px 8px rgba(0, 127, 255, 0.15);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.deepseek-tab-active {
+  background: #007fff;
+  color: white;
+  border: 1px solid #007fff;
+  box-shadow: 0 4px 12px rgba(0, 127, 255, 0.3), 0 2px 4px rgba(0, 127, 255, 0.2);
+  transform: translateY(-1px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.deepseek-tab-inactive {
+  background: #ffffff;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.deepseek-tab-inactive:hover {
+  background: #f8fafc;
+  border-color: #007fff;
+  color: #007fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 127, 255, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Markdown content styling - matching deepseek.de */
+.markdown-content {
+  color: #1f2937;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.markdown-content h1 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 1rem 0 0.75rem 0;
+  line-height: 1.4;
+  color: #111827;
+}
+
+.markdown-content h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.75rem 0 0.5rem 0;
+  line-height: 1.4;
+  color: #111827;
+}
+
+.markdown-content h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0.5rem 0;
+  line-height: 1.4;
+  color: #111827;
+}
+
+.markdown-content p {
+  margin: 0 0 0.75rem 0;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.markdown-content ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin: 0.5rem 0 0.75rem 1.5rem;
+  padding: 0;
+}
+
+.markdown-content ol {
+  list-style-type: decimal;
+  list-style-position: outside;
+  margin: 0.5rem 0 0.75rem 1.5rem;
+  padding: 0;
+}
+
+.markdown-content li {
+  margin: 0.25rem 0;
+  line-height: 1.6;
+  color: #374151;
+  padding-left: 0.25rem;
+}
+
+.markdown-content ul li::marker {
+  color: #6b7280;
+}
+
+.markdown-content ol li::marker {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.markdown-content strong {
+  font-weight: 600;
+}
+
+.markdown-content em {
+  font-style: italic;
+}
+
+.markdown-content code {
+  background-color: #f3f4f6;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: 'Courier New', monospace;
+}
+
+.markdown-content pre {
+  background-color: #f3f4f6;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+
+.markdown-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #d1d5db;
+  padding: 0.5rem 0 0.5rem 1rem;
+  margin: 0.5rem 0;
+  background-color: #f9fafb;
+  font-style: italic;
+}
+
+.deepseek-send-button {
+  border-radius: 50%;
+  background: #007fff;
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 127, 255, 0.2);
+}
+
+.deepseek-send-button:hover {
+  background: #0066cc;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 127, 255, 0.3);
+}
+
+.deepseek-send-button:active {
+  transform: scale(0.95);
+}
+
+.deepseek-file-button {
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: #4b5563;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.deepseek-file-button:hover {
+  background: #e5e7eb;
+  color: #1f2937;
+  transform: scale(1.05);
+}
