@@ -94,3 +94,9 @@ temp/
 *.njsproj
 *.sln
 *.sw?
+
+# Vercel
+.vercel
+
+# TypeScript build info
+*.tsbuildinfo
