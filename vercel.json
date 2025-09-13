@@ -1,24 +1,12 @@
 {
-  "version": 2,
-  "builds": [
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
-  "env": {
-    "VITE_DEEPSEEK_V3_API_KEY": "@vite_deepseek_v3_api_key",
-    "VITE_DEEPSEEK_R1_API_KEY": "@vite_deepseek_r1_api_key"
-  },
   "headers": [
     {
       "source": "/(.*)",
@@ -30,6 +18,10 @@
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "origin-when-cross-origin"
         }
       ]
     }
