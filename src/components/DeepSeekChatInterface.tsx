@@ -193,12 +193,32 @@ const DeepSeekChatInterface = ({ model }: DeepSeekChatInterfaceProps) => {
   };
 
   const callDeepSeekAPI = async (messages: any[], selectedModel: string): Promise<string> => {
-    const apiKey = selectedModel === "deepseek-v3" 
-      ? import.meta.env.VITE_DEEPSEEK_V3_API_KEY 
-      : import.meta.env.VITE_DEEPSEEK_R1_API_KEY;
+    // Get API key with proper fallback handling
+    const getApiKey = (model: string) => {
+      if (model === "deepseek-v3") {
+        return import.meta.env.VITE_DEEPSEEK_V3_API_KEY;
+      } else {
+        return import.meta.env.VITE_DEEPSEEK_R1_API_KEY;
+      }
+    };
 
-    if (!apiKey) {
-      throw new Error(`API key not found for ${selectedModel}`);
+    const apiKey = getApiKey(selectedModel);
+    
+    // Enhanced error checking
+    if (!apiKey || apiKey === 'undefined' || apiKey.trim() === '') {
+      console.error('Environment variables check:', {
+        selectedModel,
+        v3Key: import.meta.env.VITE_DEEPSEEK_V3_API_KEY ? 'Present' : 'Missing',
+        r1Key: import.meta.env.VITE_DEEPSEEK_R1_API_KEY ? 'Present' : 'Missing',
+        allEnvVars: import.meta.env
+      });
+      throw new Error(`API key not found for ${selectedModel}. Please check Vercel environment variables configuration.`);
+    }
+
+    console.log(`Using API key for ${selectedModel}:`, apiKey.substring(0, 10) + '...');
+
+    if (!apiKey.startsWith('sk-or-v1-')) {
+      throw new Error(`Invalid API key format for ${selectedModel}. Expected OpenRouter API key starting with 'sk-or-v1-'`);
     }
 
     // OpenRouter model names for DeepSeek models

@@ -25,15 +25,24 @@ In the Vercel project settings, add these environment variables:
 3. Click **Environment Variables** in the left sidebar
 4. Click **Add New** for each variable:
 
-**Variable 1:**
+**🔑 CRITICAL: Add these EXACT environment variables:**
+
+**Variable 1 (V3 API Key):**
 - Name: `VITE_DEEPSEEK_V3_API_KEY`
 - Value: `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`
 - Environment: ✅ Production ✅ Preview ✅ Development
 
-**Variable 2:**
+**Variable 2 (R1 API Key):**
 - Name: `VITE_DEEPSEEK_R1_API_KEY`
 - Value: `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`
 - Environment: ✅ Production ✅ Preview ✅ Development
+
+**🔧 Also add these Vercel secrets (for build time):**
+- Secret Name: `vite-deepseek-v3-api-key`
+- Secret Value: `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`
+
+- Secret Name: `vite-deepseek-r1-api-key`  
+- Secret Value: `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`
 
 5. Click **Save** after each variable
 6. **Important**: Redeploy your project after adding variables!

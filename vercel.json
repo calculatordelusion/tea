@@ -1,6 +1,10 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "build": {
+    "env": {
+      "VITE_DEEPSEEK_V3_API_KEY": "@vite-deepseek-v3-api-key",
+      "VITE_DEEPSEEK_R1_API_KEY": "@vite-deepseek-r1-api-key"
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",
